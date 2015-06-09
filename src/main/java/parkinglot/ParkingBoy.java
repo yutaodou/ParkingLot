@@ -1,7 +1,6 @@
 package parkinglot;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class ParkingBoy {
 
@@ -32,6 +31,6 @@ public class ParkingBoy {
     }
 
     protected Optional<ParkingLot> getNextParkingLot() {
-        return Stream.of(parkingLots).filter(ParkingLot::canPark).findFirst();
+        return ParkingStrategy.FIRST_AVAILABLE.apply(getParkingLots());
     }
 }

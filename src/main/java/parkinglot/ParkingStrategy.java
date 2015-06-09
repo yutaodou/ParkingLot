@@ -1,5 +1,6 @@
 package parkinglot;
 
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -14,5 +15,11 @@ public class ParkingStrategy {
     public static final Function<ParkingLot[], Optional<ParkingLot>> MOST_AVAILABLE_LOTS =
             (parkingLots -> Stream
                     .of(parkingLots)
-                    .max((lot1, lot2) -> lot1.getAvaiableLotCount() - lot2.getAvaiableLotCount()));
+                    .max(Comparator.comparing(ParkingLot::getAvaiableLotCount)));
+
+
+    public static final Function<ParkingLot[], Optional<ParkingLot>> LOWEST_UTILIZATION_RATE =
+            (parkingLots -> Stream
+                    .of(parkingLots)
+                    .min(Comparator.comparing(ParkingLot::getUtilizationRate)));
 }
