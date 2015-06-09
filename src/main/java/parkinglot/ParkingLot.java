@@ -23,6 +23,9 @@ public class ParkingLot {
         return (this.capacity - this.occupied);
     }
 
+    public float getUtilizationRate () {
+        return (this.occupied*1.0f / this.capacity);
+    }
 
     public void park(Car car) {
         if (!canPark()) {
@@ -34,5 +37,13 @@ public class ParkingLot {
 
     public void unpark(Car car) {
         this.occupied--;
+    }
+
+    @Override
+    public String toString() {
+        return "ParkingLot{" +
+                "capacity=" + capacity +
+                ", occupied=" + occupied +
+                '}';
     }
 }
