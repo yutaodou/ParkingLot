@@ -35,7 +35,7 @@ public class ParkingBoyTest {
         boy.park(car);
         Car fetched = boy.fetch(car);
 
-        assertThat(car.isParked(), is(false));
+        assertThat(fetched.isParked(), is(false));
         assertThat(fetched, is(car));
     }
 

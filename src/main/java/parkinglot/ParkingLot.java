@@ -19,7 +19,16 @@ public class ParkingLot {
         return occupied;
     }
 
+    public int getAvaiableLotCount() {
+        return (this.capacity - this.occupied);
+    }
+
+
     public void park(Car car) {
+        if (!canPark()) {
+            throw new CarParkingException("Parkinglot is full.");
+        }
+
         this.occupied++;
     }
 
