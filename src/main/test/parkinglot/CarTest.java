@@ -8,15 +8,17 @@ import static org.junit.Assert.assertThat;
 
 public class CarTest {
     private Car car;
+    ParkingLot parkingLot;
+
 
     @Before
     public void setUp() throws Exception {
         car = new Car();
+        parkingLot = new ParkingLot(1, 0);
     }
 
     @Test
     public void testPark() throws Exception {
-        ParkingLot parkingLot = new ParkingLot(1, 0);
         car.park(parkingLot);
 
         assertThat(car.isParked(), is(true));
@@ -24,11 +26,20 @@ public class CarTest {
 
     @Test
     public void testLeave() throws Exception {
-        ParkingLot lot = new ParkingLot(1, 0);
-
-        car.park(lot);
+        car.park(parkingLot);
         car.leave();
 
         assertThat(car.isParked(), is(false));
+    }
+
+    @Test( expected = CarParkingException.class)
+    public void testShouldThrowCarParkingExceptionIfParked() throws Exception {
+        car.park(parkingLot);
+        car.park(parkingLot);
+    }
+
+    @Test( expected = CarParkingException.class)
+    public void testShouldThrowCarParkingExceptionIfUnParked() throws Exception {
+        car.leave();
     }
 }
