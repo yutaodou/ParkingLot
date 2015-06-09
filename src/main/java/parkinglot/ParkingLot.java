@@ -5,8 +5,11 @@ public class ParkingLot {
     private final int capacity;
     private int occupied;
 
-    public ParkingLot(int capacity, int occupied) {
+    public ParkingLot(int capacity) {
+        this(capacity, 0);
+    }
 
+    public ParkingLot(int capacity, int occupied) {
         this.capacity = capacity;
         this.occupied = occupied;
     }
@@ -19,12 +22,12 @@ public class ParkingLot {
         return occupied;
     }
 
-    public int getAvaiableLotCount() {
+    public int getAvailableLotCount() {
         return (this.capacity - this.occupied);
     }
 
-    public float getUtilizationRate () {
-        return (this.occupied*1.0f / this.capacity);
+    public float getUtilizationRate() {
+        return (this.occupied * 1.0f / this.capacity);
     }
 
     public void park(Car car) {

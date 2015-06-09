@@ -1,13 +1,16 @@
 package parkinglot;
 
 import java.util.Optional;
+import java.util.function.Function;
 
 public class ParkingBoy {
 
     private final ParkingLot[] parkingLots;
+    protected Function<ParkingLot[], Optional<ParkingLot>> parkingStrategy;
 
     public ParkingBoy(ParkingLot... parkingLots) {
         this.parkingLots = parkingLots;
+        parkingStrategy = ParkingStrategy.FIRST_AVAILABLE;
     }
 
     public void park(Car car) {
@@ -30,7 +33,7 @@ public class ParkingBoy {
         return car;
     }
 
-    protected Optional<ParkingLot> getNextParkingLot() {
-        return ParkingStrategy.FIRST_AVAILABLE.apply(getParkingLots());
+    private Optional<ParkingLot> getNextParkingLot() {
+        return parkingStrategy.apply(getParkingLots());
     }
 }

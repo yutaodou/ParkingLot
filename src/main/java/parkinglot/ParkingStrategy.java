@@ -15,7 +15,7 @@ public class ParkingStrategy {
     public static final Function<ParkingLot[], Optional<ParkingLot>> MOST_AVAILABLE_LOTS =
             (parkingLots -> Stream
                     .of(parkingLots)
-                    .max(Comparator.comparing(ParkingLot::getAvaiableLotCount)));
+                    .max(Comparator.comparing(ParkingLot::getAvailableLotCount)));
 
 
     public static final Function<ParkingLot[], Optional<ParkingLot>> LOWEST_UTILIZATION_RATE =
