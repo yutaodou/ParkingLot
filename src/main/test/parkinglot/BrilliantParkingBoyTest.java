@@ -7,7 +7,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class BrilliantParkingBoyTest {
-    private BrilliantParkingBoy boy;
+    private ParkingBoy boy;
     private Car car;
     private ParkingLot lot1;
     private ParkingLot lot2;
@@ -17,7 +17,7 @@ public class BrilliantParkingBoyTest {
     public void setUp() throws Exception {
         lot1 = new ParkingLot(100, 40);
         lot2 = new ParkingLot(10, 0);
-        boy = new BrilliantParkingBoy(lot1, lot2);
+        boy = new ParkingBoy(new ParkingLot[]{lot1, lot2}, ParkingStrategy.LOWEST_UTILIZATION_RATE);
 
         car = new Car();
     }

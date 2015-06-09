@@ -18,7 +18,7 @@ public class ParkingBoyTest {
     public void setUp() throws Exception {
         lot1 = new ParkingLot(5, 1);
         lot2 = new ParkingLot(5, 2);
-        boy = new ParkingBoy(lot1, lot2);
+        boy = new ParkingBoy(new ParkingLot[]{lot1, lot2}, ParkingStrategy.FIRST_AVAILABLE);
 
         car = new Car();
     }
@@ -43,7 +43,7 @@ public class ParkingBoyTest {
     public void testShouldThrowsExceptionIfAllFull() throws Exception {
         lot1 = new ParkingLot(5, 5);
         lot2 = new ParkingLot(5, 5);
-        boy = new ParkingBoy(lot1, lot2);
+        boy = new ParkingBoy(new ParkingLot[]{lot1, lot2}, ParkingStrategy.FIRST_AVAILABLE);
 
         boy.park(car);
     }

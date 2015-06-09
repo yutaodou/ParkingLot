@@ -26,7 +26,8 @@ public class ParkingLot {
         return (this.capacity - this.occupied);
     }
 
-    public float getUtilizationRate() {
+    public float getUtilizationRate()
+    {
         return (this.occupied * 1.0f / this.capacity);
     }
 

@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class SmartParkingBoyTest {
 
-    private SmartParkingBoy boy;
+    private ParkingBoy boy;
     private Car car;
     private ParkingLot lot1;
     private ParkingLot lot2;
@@ -18,7 +18,7 @@ public class SmartParkingBoyTest {
     public void setUp() throws Exception {
         lot1 = new ParkingLot(5, 2);
         lot2 = new ParkingLot(5, 1);
-        boy = new SmartParkingBoy(lot1, lot2);
+        boy = new ParkingBoy(new ParkingLot[]{lot1, lot2}, ParkingStrategy.MOST_AVAILABLE_LOTS);
 
         car = new Car();
     }
@@ -35,7 +35,7 @@ public class SmartParkingBoyTest {
     public void testParkToFirstParkingLotIfHaveSameAvailableLots() throws Exception {
         lot1 = new ParkingLot(5, 2);
         lot2 = new ParkingLot(5, 2);
-        boy = new SmartParkingBoy(lot1, lot2);
+        boy = new ParkingBoy(new ParkingLot[]{lot1, lot2}, ParkingStrategy.MOST_AVAILABLE_LOTS);
 
         boy.park(car);
         assertThat(car.getParkingLot(), is(lot1));

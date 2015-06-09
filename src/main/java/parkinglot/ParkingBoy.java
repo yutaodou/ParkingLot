@@ -8,9 +8,9 @@ public class ParkingBoy {
     private final ParkingLot[] parkingLots;
     protected Function<ParkingLot[], Optional<ParkingLot>> parkingStrategy;
 
-    public ParkingBoy(ParkingLot... parkingLots) {
+    public ParkingBoy(ParkingLot[] parkingLots, Function<ParkingLot[], Optional<ParkingLot>> parkingStrategy) {
         this.parkingLots = parkingLots;
-        parkingStrategy = ParkingStrategy.FIRST_AVAILABLE;
+        this.parkingStrategy = parkingStrategy;
     }
 
     public void park(Car car) {
