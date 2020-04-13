@@ -1,6 +1,4 @@
-# ThoughtWorks OO Bootcamp
-
-The Parkinglot
+# OO Bootcamp - Parkinglot
 
 
 ### Step 1
@@ -26,7 +24,7 @@ The Parkinglot
 经理级停车场管理员打印出下辖停车场的名字，使用率以及空位数
 
 
-# 练习目的
+## 练习目的
 - Pair
 - TDD
 - Refactoring
